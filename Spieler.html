@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="img/theater-masken.png">
+    <meta property="og:image" content="img/theater-masken.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spieler & Figuren | Pension Schöller | Murfelder Theatermacher</title>
+    <meta name="description"
+        content="Das Ensemble der Murfelder Theatermacher 2026: Alle Figuren, Darsteller und Charakterbeschreibungen zum Stück Pension Schöller.">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+3:wght@400;600&display=swap');
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            margin: 0;
+            background-color: #f3f3f3;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #7b1e1e, #a82828);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 10px 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header img {
+            max-width: 100%;
+            width: 600px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        section {
+            background-color: white;
+            margin: 30px auto;
+            padding: 25px;
+            max-width: 900px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #7b1e1e;
+            margin-top: 0;
+            border-bottom: 2px solid #fbeaea;
+            padding-bottom: 5px;
+        }
+
+        /* ── Ensemble Grid ── */
+        .ensemble-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .figur-karte {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.10);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .figur-karte:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 22px rgba(123,30,30,0.15);
+        }
+
+        .figur-foto {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            background: #f0e0e0;
+            display: block;
+        }
+
+        /* Placeholder wenn kein Foto vorhanden */
+        .figur-foto-placeholder {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            background: linear-gradient(135deg, #fbeaea, #e8c4c4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+        }
+
+        .figur-info {
+            padding: 16px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .figur-name {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #7b1e1e;
+            margin: 0 0 2px 0;
+        }
+
+        .figur-rolle {
+            font-size: 0.85em;
+            color: #999;
+            font-style: italic;
+            margin: 0 0 10px 0;
+            border-bottom: 1px solid #f0e0e0;
+            padding-bottom: 8px;
+        }
+
+        .figur-beschreibung {
+            font-size: 0.9em;
+            color: #555;
+            margin: 0;
+            flex: 1;
+        }
+
+        /* ── Highlight (gleich wie Hauptseite) ── */
+        .highlight {
+            background-color: #fbeaea;
+            border-left: 6px solid #7b1e1e;
+        }
+
+        /* ── Navigation zurück ── */
+        .nav-zurueck {
+            max-width: 900px;
+            margin: 20px auto 0;
+            padding: 0 10px;
+        }
+
+        .nav-zurueck a {
+            color: #7b1e1e;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .nav-zurueck a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #7b1e1e;
+            color: white;
+            margin-top: 40px;
+        }
+
+        a {
+            color: #7b1e1e;
+        }
+
+        @media (max-width: 500px) {
+            .ensemble-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 14px;
+            }
+            header h1 {
+                font-size: 1.7em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img src="https://cdn.citiesapps.com/images/eyJidWNrZXQiOiJhcHBsaWNhdGlvbi1wcm9kLXBhZ2VzLWJ1Y2tldCIsImtleSI6ImViOWM2MzMxMDA0Y2MwNWM2YWFjZTc0Ni9pbWFnZXMvYmFubmVyLzE3MzEzMjA1MDkyODBfMjcyOTAxODQyXzQ3OTU4MzIyMDE3NzI5OV80MTg3NjU3MzkwMDI1NjQ4MzM0X24ucG5nIiwiZWRpdHMiOnsiY3JvcCI6eyJ3aWR0aCI6MTc1NCwiaGVpZ2h0Ijo3NTIsInRvcCI6MTU2LCJsZWZ0IjowfSwicm90YXRlIjowLCJyZXNpemUiOnsiZml0IjoiY292ZXIiLCJoZWlnaHQiOjU2Miwid2lkdGgiOjEzMTIsIndpdGhvdXRFbmxhcmdlbWVudCI6dHJ1ZX19fQ=="
+            alt="Pension Schöller - Murfelder Theatermacher">
+        <p style="font-size: 20px;">Die Murfelder Theatermacher präsentieren:</p>
+        <h1>🎭 Spieler & Figuren 🎭</h1>
+    </header>
+
+    <main>
+
+        <div class="nav-zurueck">
+            <a href="index.html">← Zurück zum Programm</a>
+        </div>
+
+        <section id="intro">
+            <h2>🎭 Das Ensemble 2026</h2>
+            <p>
+                Lernen Sie die Figuren und Darsteller kennen, die die Komödie
+                <strong>„Pension Schöller"</strong> bei den <strong>Murfelder Theatermachern</strong>
+                zum Leben erwecken – voller Witz, Charme und Spielfreude!
+            </p>
+        </section>
+
+        <section class="highlight" id="ensemble">
+            <h2>👥 Figuren & Darsteller</h2>
+
+            <div class="ensemble-grid">
+
+                <!-- Karte 1 – Beispiel mit Foto -->
+                <div class="figur-karte">
+                    <!-- Wenn Sie ein Foto haben: <img src="fotos/spieler1.jpg" alt="Vorname Nachname" class="figur-foto"> -->
+                    <div class="figur-foto-placeholder">🎭</div>
+                    <div class="figur-info">
+                        <p class="figur-name">Vorname Nachname</p>
+                        <p class="figur-rolle">Figur: Wilhelm Schöller</p>
+                        <p class="figur-beschreibung">
+                            Beschreibung der Figur und des Darstellers – z.&nbsp;B. Hauptrolle, pensionierter Rentner mit großem Herz und noch größerer Fantasie …
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Karte 2 -->
+                <div class="figur-karte">
+                    <div class="figur-foto-placeholder">🎭</div>
+                    <div class="figur-info">
+                        <p class="figur-name">Vorname Nachname</p>
+                        <p class="figur-rolle">Figur: Philipp Klapproth</p>
+                        <p class="figur-beschreibung">
+                            Beschreibung der Figur – z.&nbsp;B. Neffe von Schöller, lebhaft und unberechenbar …
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Karte 3 -->
+                <div class="figur-karte">
+                    <div class="figur-foto-placeholder">🎭</div>
+                    <div class="figur-info">
+                        <p class="figur-name">Vorname Nachname</p>
+                        <p class="figur-rolle">Figur: [Figurname]</p>
+                        <p class="figur-beschreibung">
+                            Beschreibung der Figur …
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Karte 4 -->
+                <div class="figur-karte">
+                    <div class="figur-foto-placeholder">🎭</div>
+                    <div class="figur-info">
+                        <p class="figur-name">Vorname Nachname</p>
+                        <p class="figur-rolle">Figur: [Figurname]</p>
+                        <p class="figur-beschreibung">
+                            Beschreibung der Figur …
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Karte 5 -->
+                <div class="figur-karte">
+                    <div class="figur-foto-placeholder">🎭</div>
+                    <div class="figur-info">
+                        <p class="figur-name">Vorname Nachname</p>
+                        <p class="figur-rolle">Figur: [Figurname]</p>
+                        <p class="figur-beschreibung">
+                            Beschreibung der Figur …
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Karte 6 -->
+                <div class="figur-karte">
+                    <div class="figur-foto-placeholder">🎭</div>
+                    <div class="figur-info">
+                        <p class="figur-name">Vorname Nachname</p>
+                        <p class="figur-rolle">Figur: [Figurname]</p>
+                        <p class="figur-beschreibung">
+                            Beschreibung der Figur …
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ➕ Weitere Karten einfach hier hineinkopieren -->
+
+            </div>
+        </section>
+
+        <section id="zurück-zum-programm" style="text-align:center;">
+            <h2>📅 Alle Termine im Überblick</h2>
+            <p>Noch keine Karten? Jetzt Plätze sichern!</p>
+            <a href="index.html" style="display:inline-block;margin-top:10px;padding:12px 25px;background-color:#7b1e1e;color:white;text-decoration:none;border-radius:5px;font-weight:bold;">
+                🎟️ Zum Programm & Reservierung
+            </a>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Murfelder Theatermacher | Ensemble & Figuren | Straß in der Steiermark</p>
+    </footer>
+
+</body>
+</html>
