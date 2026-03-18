@@ -69,7 +69,7 @@
         .figur-karte {
             background: #fff;
             border-radius: 10px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.10);
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.10);
             overflow: hidden;
             transition: transform 0.2s, box-shadow 0.2s;
             display: flex;
@@ -78,13 +78,14 @@
 
         .figur-karte:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 22px rgba(123,30,30,0.15);
+            box-shadow: 0 8px 22px rgba(123, 30, 30, 0.15);
         }
 
         .figur-foto {
             width: 100%;
             aspect-ratio: 3 / 4;
             object-fit: cover;
+            object-position: top center;
             background: #f0e0e0;
             display: block;
         }
@@ -171,9 +172,110 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 14px;
             }
+
             header h1 {
                 font-size: 1.7em;
             }
+        }
+
+        /* ── Modal ── */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.aktiv {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 14px;
+            max-width: 420px;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            animation: modal-ein 0.25s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes modal-ein {
+            from { transform: scale(0.9); opacity: 0; }
+            to   { transform: scale(1);   opacity: 1; }
+        }
+
+        .modal-foto {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+        }
+
+        .modal-foto-placeholder {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            background: linear-gradient(135deg, #fbeaea, #e8c4c4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6em;
+        }
+
+        .modal-body {
+            padding: 24px 24px 0;
+        }
+
+        .modal-name {
+            font-size: 1.6em;
+            font-weight: bold;
+            color: #7b1e1e;
+            margin: 0 0 4px 0;
+        }
+
+        .modal-rolle {
+            font-size: 1em;
+            color: #999;
+            font-style: italic;
+            margin: 0 0 14px 0;
+            padding-bottom: 14px;
+            border-bottom: 2px solid #fbeaea;
+        }
+
+        .modal-beschreibung {
+            font-size: 1em;
+            color: #444;
+            margin: 0;
+            line-height: 1.7;
+        }
+
+        .modal-schliessen {
+            display: block;
+            margin: 20px 24px 24px;
+            padding: 11px;
+            background: #7b1e1e;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            cursor: pointer;
+            width: calc(100% - 48px);
+            font-weight: bold;
+        }
+
+        .modal-schliessen:hover {
+            background: #a82828;
+        }
+
+        .figur-karte {
+            cursor: pointer;
         }
     </style>
 </head>
@@ -183,7 +285,6 @@
     <header>
         <img src="https://cdn.citiesapps.com/images/eyJidWNrZXQiOiJhcHBsaWNhdGlvbi1wcm9kLXBhZ2VzLWJ1Y2tldCIsImtleSI6ImViOWM2MzMxMDA0Y2MwNWM2YWFjZTc0Ni9pbWFnZXMvYmFubmVyLzE3MzEzMjA1MDkyODBfMjcyOTAxODQyXzQ3OTU4MzIyMDE3NzI5OV80MTg3NjU3MzkwMDI1NjQ4MzM0X24ucG5nIiwiZWRpdHMiOnsiY3JvcCI6eyJ3aWR0aCI6MTc1NCwiaGVpZ2h0Ijo3NTIsInRvcCI6MTU2LCJsZWZ0IjowfSwicm90YXRlIjowLCJyZXNpemUiOnsiZml0IjoiY292ZXIiLCJoZWlnaHQiOjU2Miwid2lkdGgiOjEzMTIsIndpdGhvdXRFbmxhcmdlbWVudCI6dHJ1ZX19fQ=="
             alt="Pension Schöller - Murfelder Theatermacher">
-        <p style="font-size: 20px;">Die Murfelder Theatermacher präsentieren:</p>
         <h1>🎭 Ensemble & Figuren 🎭</h1>
     </header>
 
@@ -209,8 +310,8 @@
 
                 <!-- Karte 1 – Hermann Haas -->
                 <div class="figur-karte">
-                    <img src="img/Hasi.jpeg" alt="Hermann Haas" class="figur-foto"
-                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                    <img src="img/Hasi.jpg" alt="Hermann Haas" class="figur-foto"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                     <div class="figur-foto-placeholder" style="display:none;">🎭</div>
                     <div class="figur-info">
                         <p class="figur-name">Hermann Haas</p>
@@ -221,11 +322,11 @@
 
                 <!-- Karte 2 – Markus -->
                 <div class="figur-karte">
-                    <img src="img/Markus.jpeg" alt="Markus" class="figur-foto"
-                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                    <img src="img/Markus.jpg" alt="Markus Kicker" class="figur-foto"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                     <div class="figur-foto-placeholder" style="display:none;">🎭</div>
                     <div class="figur-info">
-                        <p class="figur-name">Markus</p>
+                        <p class="figur-name">Markus Kicker</p>
                         <p class="figur-rolle">Figur: Willhelm Gallenschlegel</p>
                         <p class="figur-beschreibung">Beschreibung der Figur …</p>
                     </div>
@@ -233,8 +334,8 @@
 
                 <!-- Karte 3 – Carmen Klapsch -->
                 <div class="figur-karte">
-                    <img src="img/Carmen.jpeg" alt="Carmen Klapsch" class="figur-foto"
-                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                    <img src="img/Carmen.jpg" alt="Carmen Klapsch" class="figur-foto"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                     <div class="figur-foto-placeholder" style="display:none;">🎭</div>
                     <div class="figur-info">
                         <p class="figur-name">Carmen Klapsch</p>
@@ -245,20 +346,20 @@
 
                 <!-- Karte 4 – Nicole Puntigam -->
                 <div class="figur-karte">
-                    <img src="img/Nicole.jpeg" alt="Nicole Puntigam" class="figur-foto"
-                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                    <img src="img/Nicole.jpg" alt="Nicole Puntigam" class="figur-foto"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                     <div class="figur-foto-placeholder" style="display:none;">🎭</div>
                     <div class="figur-info">
                         <p class="figur-name">Nicole Puntigam</p>
-                        <p class="figur-rolle">Figur: Claudia</p>
+                        <p class="figur-rolle">Figur: Claudia Spindler</p>
                         <p class="figur-beschreibung">Beschreibung der Figur …</p>
                     </div>
                 </div>
 
                 <!-- Karte 5 – Hannes Schreiner -->
                 <div class="figur-karte">
-                    <img src="img/Hannes.jpeg" alt="Hannes Schreiner" class="figur-foto"
-                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                    <img src="img/Hannes.jpg" alt="Hannes Schreiner" class="figur-foto"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                     <div class="figur-foto-placeholder" style="display:none;">🎭</div>
                     <div class="figur-info">
                         <p class="figur-name">Hannes Schreiner</p>
@@ -269,8 +370,8 @@
 
                 <!-- Karte 6 – Maximilian Puntigam -->
                 <div class="figur-karte">
-                    <img src="img/Max.jpeg" alt="Maximilian Puntigam" class="figur-foto"
-                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                    <img src="img/Max.jpg" alt="Maximilian Puntigam" class="figur-foto"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                     <div class="figur-foto-placeholder" style="display:none;">🎭</div>
                     <div class="figur-info">
                         <p class="figur-name">Maximilian Puntigam</p>
@@ -279,12 +380,13 @@
                     </div>
                 </div>
 
-                <!-- Karte 7 – Tanja  -->
+                <!-- Karte 7 – Tanja -->
                 <div class="figur-karte">
-                    
-                    <div class="figur-foto-placeholder">🎭</div>
+                    <img src="img/Tanja.jpg" alt="Tanja Brucker" class="figur-foto"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                    <div class="figur-foto-placeholder" style="display:none;">🎭</div>
                     <div class="figur-info">
-                        <p class="figur-name">Tanja</p>
+                        <p class="figur-name">Tanja Brucker</p>
                         <p class="figur-rolle">Figur: Karoline Kadletz</p>
                         <p class="figur-beschreibung">Beschreibung der Figur …</p>
                     </div>
@@ -292,8 +394,8 @@
 
                 <!-- Karte 8 – Michael Hadler -->
                 <div class="figur-karte">
-                    <img src="img/Michi.jpeg" alt="Michael Hadler" class="figur-foto"
-                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                    <img src="img/Michi.jpg" alt="Michael Hadler" class="figur-foto"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                     <div class="figur-foto-placeholder" style="display:none;">🎭</div>
                     <div class="figur-info">
                         <p class="figur-name">Michael Hadler</p>
@@ -304,48 +406,48 @@
 
                 <!-- Karte 9 – Mabel Altmann -->
                 <div class="figur-karte">
-                    <img src="img/Mabel.jpeg" alt="Mabel Altmann" class="figur-foto"
-                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                    <img src="img/Mabel.jpg" alt="Mabel Altmann" class="figur-foto"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                     <div class="figur-foto-placeholder" style="display:none;">🎭</div>
                     <div class="figur-info">
                         <p class="figur-name">Mabel Altmann</p>
-                        <p class="figur-rolle">Figur: Ludmilla</p>
+                        <p class="figur-rolle">Figur: Ludmilla Schöller</p>
                         <p class="figur-beschreibung">Beschreibung der Figur …</p>
                     </div>
                 </div>
 
                 <!-- Karte 10 – Veronika Puntigam -->
                 <div class="figur-karte">
-                    <img src="img/Veronika.jpeg" alt="Veronika Puntigam" class="figur-foto"
-                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                    <img src="img/Veronika.jpg" alt="Veronika Puntigam" class="figur-foto"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                     <div class="figur-foto-placeholder" style="display:none;">🎭</div>
                     <div class="figur-info">
                         <p class="figur-name">Veronika Puntigam</p>
-                        <p class="figur-rolle">Figur: Liliane</p>
+                        <p class="figur-rolle">Figur: Liliane Schöller</p>
                         <p class="figur-beschreibung">Beschreibung der Figur …</p>
                     </div>
                 </div>
 
                 <!-- Karte 11 – Herwig -->
                 <div class="figur-karte">
-                    <img src="img/Herwig.jpeg" alt="Herwig" class="figur-foto"
-                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                    <img src="img/Herwig.jpg" alt="Herwig Brucker" class="figur-foto"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                     <div class="figur-foto-placeholder" style="display:none;">🎭</div>
                     <div class="figur-info">
-                        <p class="figur-name">Herwig</p>
-                        <p class="figur-rolle">Figur: [Figurname]</p>
+                        <p class="figur-name">Herwig Brucker</p>
+                        <p class="figur-rolle">Figur: Ludwig Graf, Hofrat a.D.</p>
                         <p class="figur-beschreibung">Beschreibung der Figur …</p>
                     </div>
                 </div>
 
-                <!-- Karte 12 -->
+                <!-- Karte 12 – Melanie -->
                 <div class="figur-karte">
-                    <img src="img/Melani.jpeg" alt="Melani" class="figur-foto"
-                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                    <img src="img/Melanie.jpg" alt="Melanie" class="figur-foto"
+                        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                     <div class="figur-foto-placeholder" style="display:none;">🎭</div>
                     <div class="figur-info">
-                        <p class="figur-name">Melani</p>
-                        <p class="figur-rolle">Figur: [Figurname]</p>
+                        <p class="figur-name">Melanie</p>
+                        <p class="figur-rolle">Figur: Liselotte Schöller</p>
                         <p class="figur-beschreibung">Beschreibung der Figur …</p>
                     </div>
                 </div>
@@ -356,7 +458,8 @@
         <section id="zurück-zum-programm" style="text-align:center;">
             <h2>📅 Alle Termine im Überblick</h2>
             <p>Noch keine Karten? Jetzt Plätze sichern!</p>
-            <a href="index.html" style="display:inline-block;margin-top:10px;padding:12px 25px;background-color:#7b1e1e;color:white;text-decoration:none;border-radius:5px;font-weight:bold;">
+            <a href="index.html"
+                style="display:inline-block;margin-top:10px;padding:12px 25px;background-color:#7b1e1e;color:white;text-decoration:none;border-radius:5px;font-weight:bold;">
                 🎟️ Zum Programm & Reservierung
             </a>
         </section>
@@ -367,5 +470,62 @@
         <p>&copy; 2026 Murfelder Theatermacher | Ensemble & Figuren | Straß in der Steiermark</p>
     </footer>
 
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal" onclick="modalSchliessen(event)">
+        <div class="modal">
+            <img id="modal-foto" class="modal-foto" src="" alt="">
+            <div id="modal-foto-placeholder" class="modal-foto-placeholder" style="display:none;">🎭</div>
+            <div class="modal-body">
+                <p class="modal-name" id="modal-name"></p>
+                <p class="modal-rolle" id="modal-rolle"></p>
+                <p class="modal-beschreibung" id="modal-beschreibung"></p>
+            </div>
+            <button class="modal-schliessen" onclick="document.getElementById('modal').classList.remove('aktiv')">
+                ✕ Schließen
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.figur-karte').forEach(karte => {
+            karte.addEventListener('click', () => {
+                const img = karte.querySelector('.figur-foto');
+                const name = karte.querySelector('.figur-name').textContent;
+                const rolle = karte.querySelector('.figur-rolle').textContent;
+                const beschreibung = karte.querySelector('.figur-beschreibung').textContent;
+
+                const modalFoto = document.getElementById('modal-foto');
+                const modalPlaceholder = document.getElementById('modal-foto-placeholder');
+
+                if (img && img.style.display !== 'none') {
+                    modalFoto.src = img.src;
+                    modalFoto.alt = img.alt;
+                    modalFoto.style.display = 'block';
+                    modalPlaceholder.style.display = 'none';
+                } else {
+                    modalFoto.style.display = 'none';
+                    modalPlaceholder.style.display = 'flex';
+                }
+
+                document.getElementById('modal-name').textContent = name;
+                document.getElementById('modal-rolle').textContent = rolle;
+                document.getElementById('modal-beschreibung').textContent = beschreibung;
+
+                document.getElementById('modal').classList.add('aktiv');
+            });
+        });
+
+        function modalSchliessen(event) {
+            if (event.target === document.getElementById('modal')) {
+                document.getElementById('modal').classList.remove('aktiv');
+            }
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') document.getElementById('modal').classList.remove('aktiv');
+        });
+    </script>
+
 </body>
+
 </html>
